@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#configures an Ubuntu server with the below requirements:
+#   localhost resolves to 127.0.0.2
+#   facebook.com resolves to 8.8.8.8
+#   The checker is running on Docker
+resolveip -s localhost
+127.0.0.2
+resolveip -s facebook.com
+8.8.8.8
