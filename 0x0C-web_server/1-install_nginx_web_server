@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #script that configures a new Ubuntu machine 
-udo apt-get update
+sudo apt-get update
 sudo apt-get -y install nginx
 sudo service nginx start
 sudo rm /usr/share/nginx/html/index.html
