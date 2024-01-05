@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 #script that configures a new Ubuntu machine
-sudo apt-get install -y nginx
-echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
-sudo service nginx start
+sudo apt update
+sudo apt install nginx -y
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw --force enable
+sudo ufw status
+systemctl status nginx
+echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+sudo service nginx restart
