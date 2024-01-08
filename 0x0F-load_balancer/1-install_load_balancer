@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#Install and configure HAproxy on your lb-01 server
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+server_config=\
+"
+frontend dasilva-frontend
+        bind *:80
+        mode http
+        default_backend dasilva-backend
+backend dasilva-backend
+        balance roundrobin
+        server 71109-web-01 54.144.46.99:80 check
+        server 71109-web-02 54.209.42.65:80 check
+"
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+sudo service haproxy restart
